@@ -1,4 +1,19 @@
-27+15;
-* && || / end if else fun bool
-if(var + emi == 5)
- x = 14   >=
+5.24
+true
+
+/* program matrix.m */
+fun mult_matrix(a[][]:real,b[][]:real,c[][]:real):bool
+{ var ab[size(a)][size(b[])]:real;
+var n:int; var m:int; var p:int; var i:int; var j:int; var k:int;
+var ret: bool;
+begin
+% check the dimensions agree
+n:= size(a); m:= size(b); p:= size(c[]);
+if n=size(c) && m=size(a[]) && p=size(b[]) then
+{ begin
+% form ab = a*b
+i := 0;
+while i<n do { begin
+j := 0;
+while j<p do { begin
+ab[i][j]:= 0.0;

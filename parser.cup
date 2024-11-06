@@ -37,9 +37,10 @@ terminal  			EQUAL, LT, GT, LE, GE;
 terminal			ASSIGN;
 terminal			LPAR, RPAR, CLPAR, CRPAR, SLPAR, SRPAR;
 terminal			SEMICOLON, COLON, COMMA;
-terminal			IF, THEN, WHILE, DO, READ, ELSE, BEGIN, END, PRINT, INT, BOOL, REAL, VAR, SIZE, FLOAT, FLOOR, CEIL, FUN, RETURN;
-terminal Integer    NUMBER;        // our scanner provides numbers as integers
-terminal 			ID;
+terminal			IF, THEN, WHILE, DO, READ, ELSE, BEGIN, END, PRINT, INT, REAL, BOOL, VAR, SIZE, FLOAT, FLOOR, CEIL, FUN, RETURN;
+terminal Integer    IVAL;        // our scanner provides numbers as integers
+terminal 			ID, BVAL;
+terminal Double		RVAL;
 /* Non terminals */
 non terminal            expr_list;
 non terminal Integer    expr;      // used to store evaluated subexpressions

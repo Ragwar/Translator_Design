@@ -9,6 +9,7 @@ package cup.example;
 public interface sym {
   /* terminals */
   public static final int GE = 13;
+  public static final int BVAL = 45;
   public static final int SLPAR = 19;
   public static final int INT = 33;
   public static final int FLOOR = 39;
@@ -19,7 +20,7 @@ public interface sym {
   public static final int RPAR = 16;
   public static final int FUN = 41;
   public static final int OR = 7;
-  public static final int BOOL = 34;
+  public static final int BOOL = 35;
   public static final int COMMA = 23;
   public static final int DIV = 5;
   public static final int BEGIN = 30;
@@ -35,9 +36,9 @@ public interface sym {
   public static final int error = 1;
   public static final int MUL = 4;
   public static final int ADD = 2;
-  public static final int NUMBER = 43;
   public static final int SRPAR = 20;
-  public static final int REAL = 35;
+  public static final int REAL = 34;
+  public static final int RVAL = 46;
   public static final int COLON = 22;
   public static final int ELSE = 29;
   public static final int READ = 28;
@@ -53,6 +54,7 @@ public interface sym {
   public static final int PRINT = 32;
   public static final int DO = 27;
   public static final int CRPAR = 18;
+  public static final int IVAL = 43;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -88,8 +90,8 @@ public interface sym {
   "END",
   "PRINT",
   "INT",
-  "BOOL",
   "REAL",
+  "BOOL",
   "VAR",
   "SIZE",
   "FLOAT",
@@ -97,8 +99,10 @@ public interface sym {
   "CEIL",
   "FUN",
   "RETURN",
-  "NUMBER",
-  "ID"
+  "IVAL",
+  "ID",
+  "BVAL",
+  "RVAL"
   };
 }
 

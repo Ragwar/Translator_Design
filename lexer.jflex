@@ -56,13 +56,13 @@ import java.io.InputStreamReader;
 
 Newline    = \r | \n | \r\n
 Whitespace = [ \t\f] | {Newline}
-Number     = [0] | [1-9] [0-9]* 
-Real = Number* . Number+ 
+IVAL     = [0] | [1-9] [0-9]* 
+RVAL = ([0] | [1-9] [0-9]*)+ . ([0] | [1-9] [0-9]*)+ 
 
 /* comments */
 Comment = {TraditionalComment} | {EndOfLineComment}
 TraditionalComment = "/*" {CommentContent} \*+ "/"
-EndOfLineComment = "//" [^\r\n]* {Newline}
+EndOfLineComment = "%" [^\r\n]* {Newline}
 CommentContent = ( [^*] | \*+[^*/] )*
 
 ID = ([:jletter:]) ( "_" | [:jletterdigit:] | [:jletter:]  )*
@@ -98,7 +98,7 @@ ID = ([:jletter:]) ( "_" | [:jletterdigit:] | [:jletter:]  )*
   
   ":="          { return symbolFactory.newSymbol("ASSIGN", ASSIGN); }
   
-   "("          { return symbolFactory.newSymbol("LPAR", LPAR); }
+  "("          { return symbolFactory.newSymbol("LPAR", LPAR); }
   ")"          { return symbolFactory.newSymbol("RPAR", RPAR); }
   "{"          { return symbolFactory.newSymbol("CLPAR", CLPAR); }
   "}"          { return symbolFactory.newSymbol("CRPAR", CRPAR); }
@@ -128,10 +128,13 @@ ID = ([:jletter:]) ( "_" | [:jletterdigit:] | [:jletter:]  )*
   "ceil"          { return symbolFactory.newSymbol("CEIL", CEIL); }
   "fun"          { return symbolFactory.newSymbol("FUN", FUN); }
   "return"          { return symbolFactory.newSymbol("RETURN", RETURN); }
+  "true"          { return symbolFactory.newSymbol("BVAL", BVAL); }
+  "false"          { return symbolFactory.newSymbol("BVAL", BVAL); }
   
-  {Number}     { return symbolFactory.newSymbol("NUMBER", NUMBER, Integer.parseInt(yytext())); }
+  {IVAL}     { return symbolFactory.newSymbol("IVAL", IVAL, Integer.parseInt(yytext())); }
   {ID}     { return symbolFactory.newSymbol("ID", ID, yytext()); }
-
+  { RVAL } { return symbolFactory.newSymbol( "RVAL", RVAL , Double . valueOf ( yytext ())); }
+  
 }
 
 
