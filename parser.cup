@@ -1,0 +1,63 @@
+/*
+   Simple +/-/* expression language; 
+   parser evaluates constant expressions on the fly
+*/
+
+package cup.example;
+
+import java_cup.runtime.*;
+import cup.example.Lexer;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileInputStream;
+
+parser code {:
+  protected Lexer lexer;
+:}
+
+/* define how to connect to the scanner! */
+init with {:
+  ComplexSymbolFactory f = new ComplexSymbolFactory();
+  symbolFactory = f;
+  File file = new File("input.txt");
+  FileInputStream fis = null;
+  try {
+    fis = new FileInputStream(file);
+  } catch (IOException e) {
+    e.printStackTrace();
+  } 
+  lexer = new Lexer(f,fis);
+:};
+scan with {: return lexer.next_token(); :};
+
+/* Terminals (tokens returned by the scanner). */
+terminal            ADD, SUB, MUL, DIV; 
+terminal            AND, OR, NOT;
+terminal  			EQUAL, LT, GT, LE, GE;
+terminal			ASSIGN;
+terminal			LPAR, RPAR, CLPAR, CRPAR, SLPAR, SRPAR;
+terminal			SEMICOLON, COLON, COMMA;
+terminal			IF, THEN, WHILE, DO, READ, ELSE, BEGIN, END, PRINT, INT, BOOL, REAL, VAR, SIZE, FLOAT, FLOOR, CEIL, FUN, RETURN;
+terminal Integer    NUMBER;        // our scanner provides numbers as integers
+terminal 			ID;
+/* Non terminals */
+non terminal            expr_list;
+non terminal Integer    expr;      // used to store evaluated subexpressions
+
+/* Precedences */
+precedence left ADD, SUB, MUL, DIV;
+
+/* The grammar rules */
+expr_list ::= expr_list expr:e SEMICOLON         {: System.out.println(e); :}
+            | expr:e SEMICOLON                   {: System.out.println(e); :}
+            ;
+            
+expr      ::= expr:e1 ADD  expr:e2         {: RESULT = e1+e2;        :}
+             | expr:e1 SUB expr:e2        {: RESULT = e1-e2;        :}
+             | expr:e1 MUL expr:e2        {: RESULT = e1*e2;        :}
+             
+            // %prec UMINUS
+          //   | LPAREN expr:e RPAREN	         {: RESULT = e;           :}
+          //   | NUMBER:n	                     {: RESULT = n;           :}
+             ;
+       
