@@ -42,23 +42,99 @@ terminal Integer    IVAL;        // our scanner provides numbers as integers
 terminal 			ID, BVAL;
 terminal Double		RVAL;
 /* Non terminals */
-non terminal            expr_list;
+non terminal            prog, block ,int_factor,array_dimemsions,prog_stmt,declarations,program_body, declaration, fun_declaration, var_declaration, array_dimensions, type ,param_list,fun_block,fun_body,parameters,basic_declaration,more_parameters ,basic_array_dimensions ,prog_stmts ,identifier,bint_term,bint_factor,int_expr,compare_op,int_term,addop,mulop,modifier_list,arguments, more_arguments;
 non terminal Integer    expr;      // used to store evaluated subexpressions
 
 /* Precedences */
 precedence left ADD, SUB, MUL, DIV;
 
 /* The grammar rules */
-expr_list ::= expr_list expr:e SEMICOLON         {: System.out.println(e); :}
-            | expr:e SEMICOLON                   {: System.out.println(e); :}
-            ;
-            
-expr      ::= expr:e1 ADD  expr:e2         {: RESULT = e1+e2;        :}
-             | expr:e1 SUB expr:e2        {: RESULT = e1-e2;        :}
-             | expr:e1 MUL expr:e2        {: RESULT = e1*e2;        :}
-             
-            // %prec UMINUS
-          //   | LPAREN expr:e RPAREN	         {: RESULT = e;           :}
-          //   | NUMBER:n	                     {: RESULT = n;           :}
-             ;
-       
+prog ::= block : b;
+
+block ::= declarations program_body;
+
+declarations ::= declaration SEMICOLON declarations
+				|;
+
+declaration ::= var_declaration 
+			| fun_declaration;
+			
+var_declaration ::= VAR ID array_dimemsions COLON type;
+
+type ::= INT
+		| REAL
+		| BOOL;
+		
+array_dimensions ::= SLPAR expr SRPAR array_dimensions 
+		|;
+
+fun_declaration ::= FUN ID param_list COLON type CLPAR fun_block CRPAR;
+
+fun_block ::= declarations fun_body;
+
+param_list ::= LPAR parameters RPAR;
+
+parameters ::= basic_declaration more_parameters 
+		|;
+
+more_parameters ::= COMMA basic_declaration more_parameters 
+		|;
+
+basic_declaration ::= ID basic_array_dimensions COLON type;
+
+basic_array_dimensions ::= SLPAR SRPAR basic_array_dimensions 
+		|;
+
+program_body ::= BEGIN prog_stmts END;
+
+fun_body ::= BEGIN prog_stmts RETURN expr SEMICOLON END;
+
+prog_stmts ::= prog_stmt SEMICOLON prog_stmts 
+		|;
+
+prog_stmt ::= IF expr THEN prog_stmt ELSE prog_stmt
+		| WHILE expr DO prog_stmt
+		| READ identifier
+		| identifier ASSIGN expr
+		| PRINT expr
+		| CLPAR block CRPAR;
+
+identifier ::= ID array_dimensions;
+
+expr ::= expr OR bint_term | bint_term;
+
+bint_term ::= bint_term AND bint_factor | bint_factor;
+
+bint_factor ::= NOT bint_factor
+		| int_expr compare_op int_expr
+		| int_expr;
+
+compare_op ::= EQUAL | LT | GT | LE |GE;
+
+int_expr ::= int_expr addop int_term | int_term;
+
+addop ::= ADD | SUB;
+
+int_term ::= int_term mulop int_factor | int_factor;
+
+mulop ::= MUL | DIV;
+
+int_factor ::= LPAR expr RPAR
+		| SIZE LPAR ID basic_array_dimensions RPAR
+		| FLOAT LPAR expr RPAR
+		| FLOOR LPAR expr RPAR
+		| CEIL LPAR expr RPAR
+		| ID modifier_list
+		| IVAL
+		| RVAL
+		| BVAL
+		| SUB int_factor;
+
+modifier_list ::= LPAR arguments RPAR | array_dimensions;
+
+arguments ::= expr more_arguments 
+		|;
+
+more_arguments ::= COMMA expr more_arguments 
+		|;
+					     
