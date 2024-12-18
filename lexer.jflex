@@ -65,7 +65,7 @@ TraditionalComment = "/*" {CommentContent} \*+ "/"
 EndOfLineComment = "%" [^\r\n]* {Newline}
 CommentContent = ( [^*] | \*+[^*/] )*
 
-ID = ([:jletter:]) ( "_" | [:jletterdigit:] | [:jletter:]  )*
+ID = ([a-zA-Z]) ( "_" | [0-9] | [a-zA-Z]  )*
 
 
 %eofval{
@@ -134,7 +134,6 @@ ID = ([:jletter:]) ( "_" | [:jletterdigit:] | [:jletter:]  )*
   {IVAL}     { return symbolFactory.newSymbol("IVAL", IVAL, Integer.parseInt(yytext())); }
   {ID}     { return symbolFactory.newSymbol("ID", ID, yytext()); }
   { RVAL } { return symbolFactory.newSymbol( "RVAL", RVAL , Double . valueOf ( yytext ())); }
-  
 }
 
 

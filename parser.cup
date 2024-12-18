@@ -38,103 +38,138 @@ terminal			ASSIGN;
 terminal			LPAR, RPAR, CLPAR, CRPAR, SLPAR, SRPAR;
 terminal			SEMICOLON, COLON, COMMA;
 terminal			IF, THEN, WHILE, DO, READ, ELSE, BEGIN, END, PRINT, INT, REAL, BOOL, VAR, SIZE, FLOAT, FLOOR, CEIL, FUN, RETURN;
-terminal Integer    IVAL;        // our scanner provides numbers as integers
-terminal 			ID, BVAL;
-terminal Double		RVAL;
+terminal     IVAL;        // our scanner provides numbers as integers
+terminal 		ID , BVAL;
+terminal 		RVAL;
 /* Non terminals */
 non terminal            prog, block ,int_factor,array_dimemsions,prog_stmt,declarations,program_body, declaration, fun_declaration, var_declaration, array_dimensions, type ,param_list,fun_block,fun_body,parameters,basic_declaration,more_parameters ,basic_array_dimensions ,prog_stmts ,identifier,bint_term,bint_factor,int_expr,compare_op,int_term,addop,mulop,modifier_list,arguments, more_arguments;
-non terminal Integer    expr;      // used to store evaluated subexpressions
+non terminal     expr;      // used to store evaluated subexpressions
 
-/* Precedences */
-precedence left ADD, SUB, MUL, DIV;
 
 /* The grammar rules */
-prog ::= block : b;
+prog ::= block {:System.out.println("Program"):}
+;
 
-block ::= declarations program_body;
+block ::= declarations program_body{:System.out.println("Block"):}
+			;
 
-declarations ::= declaration SEMICOLON declarations
+declarations ::= declaration SEMICOLON declarations{:System.out.println("Declarations list"):}
 				|;
 
-declaration ::= var_declaration 
-			| fun_declaration;
+declaration ::= var_declaration {:System.out.println("Variable declaration"):}
+			| fun_declaration{:System.out.println("Function declaration"):}
+			;
 			
-var_declaration ::= VAR ID array_dimemsions COLON type;
+var_declaration ::= VAR ID array_dimemsions COLON type{:System.out.println("Variable ID dimension type"):}
+	;
 
-type ::= INT
-		| REAL
-		| BOOL;
+type ::= INT{:System.out.println("type int"):}
+		| REAL{:System.out.println("type real"):}
+		| BOOL{:System.out.println("type bool"):}
+		;
 		
-array_dimensions ::= SLPAR expr SRPAR array_dimensions 
-		|;
+array_dimensions ::= SLPAR expr SRPAR array_dimensions {:System.out.println("( expression )"):}
+		|
+		;
 
-fun_declaration ::= FUN ID param_list COLON type CLPAR fun_block CRPAR;
+fun_declaration ::= FUN ID param_list COLON type CLPAR fun_block CRPAR{:System.out.println("Function ID parameter list: type {function block}"):}
+	;
 
-fun_block ::= declarations fun_body;
+fun_block ::= declarations fun_body{:System.out.println("Function block"):}
+	;
 
-param_list ::= LPAR parameters RPAR;
+param_list ::= LPAR parameters RPAR{:System.out.println("Parameter list"):}
+	;
 
-parameters ::= basic_declaration more_parameters 
-		|;
+parameters ::= basic_declaration more_parameters {:System.out.println("Parameters"):}
+		|
+			;
 
-more_parameters ::= COMMA basic_declaration more_parameters 
-		|;
+more_parameters ::= COMMA basic_declaration more_parameters {:System.out.println("More parameters"):}
+		|
+		;
 
-basic_declaration ::= ID basic_array_dimensions COLON type;
+basic_declaration ::= ID basic_array_dimensions COLON type{:System.out.println("Basic declaration"):}
+	;
 
-basic_array_dimensions ::= SLPAR SRPAR basic_array_dimensions 
-		|;
+basic_array_dimensions ::= SLPAR SRPAR basic_array_dimensions {:System.out.println("Basic array dimension"):}
+		|
+		;
 
-program_body ::= BEGIN prog_stmts END;
+program_body ::= BEGIN prog_stmts END{:System.out.println("Program Body"):}
+	;
 
-fun_body ::= BEGIN prog_stmts RETURN expr SEMICOLON END;
+fun_body ::= BEGIN prog_stmts RETURN expr SEMICOLON END{:System.out.println("Function body"):}
+	;
 
-prog_stmts ::= prog_stmt SEMICOLON prog_stmts 
-		|;
+prog_stmts ::= prog_stmt SEMICOLON prog_stmts {:System.out.println("Program statements"):}
+		|
+		;
 
-prog_stmt ::= IF expr THEN prog_stmt ELSE prog_stmt
-		| WHILE expr DO prog_stmt
-		| READ identifier
-		| identifier ASSIGN expr
-		| PRINT expr
-		| CLPAR block CRPAR;
+prog_stmt ::= IF expr THEN prog_stmt ELSE prog_stmt{:System.out.println("If statement"):}
+		| WHILE expr DO prog_stmt{:System.out.println("While statement"):}
+		| READ identifier{:System.out.println("Read statement"):}
+		| identifier ASSIGN expr{:System.out.println("Assign statement"):}
+		| PRINT expr{:System.out.println("Print statement"):}
+		| CLPAR block CRPAR{:System.out.println("{block}"):}
+		;
 
-identifier ::= ID array_dimensions;
+identifier ::= ID array_dimensions{:System.out.println("Identifier"):}
+	;
 
-expr ::= expr OR bint_term | bint_term;
+expr ::= expr OR bint_term {:System.out.println("Expression"):}
+ | bint_term {:System.out.println("Two termen operation"):}
+	;
 
-bint_term ::= bint_term AND bint_factor | bint_factor;
+bint_term ::= bint_term AND bint_factor {:System.out.println("AND operaion"):}
+ | bint_factor {:System.out.println("Factor"):}
+	;
 
-bint_factor ::= NOT bint_factor
-		| int_expr compare_op int_expr
-		| int_expr;
+bint_factor ::= NOT bint_factor {:System.out.println("Negate operation"):}
+		| int_expr compare_op int_expr {:System.out.println("Compare operation"):}
+		| int_expr {:System.out.println("Integer expression"):}
+		;
 
-compare_op ::= EQUAL | LT | GT | LE |GE;
+compare_op ::= EQUAL {:System.out.println("Compare operation ="):} | LT {:System.out.println("Compare operation less than"):} | GT {:System.out.println("Compare operation greater than"):} | LE {:System.out.println("Compare operation less equal"):} |GE {:System.out.println("Compare operation greater equal"):}
+	;
 
-int_expr ::= int_expr addop int_term | int_term;
+int_expr ::= int_expr addop int_term {:System.out.println("Addition Expresion"):}
+ | int_term 
+;
 
-addop ::= ADD | SUB;
+addop ::= ADD {:System.out.println("Addition operation"):}
+ | SUB {:System.out.println("Subtraction operation"):}
+;
 
-int_term ::= int_term mulop int_factor | int_factor;
+int_term ::= int_term mulop int_factor {:System.out.println("Multiplication Expression"):}
+ | int_factor 
+;
 
-mulop ::= MUL | DIV;
+mulop ::= MUL {:System.out.println("Multiplication operation"):}
+| DIV {:System.out.println("Division operation"):}
+;
 
-int_factor ::= LPAR expr RPAR
-		| SIZE LPAR ID basic_array_dimensions RPAR
-		| FLOAT LPAR expr RPAR
-		| FLOOR LPAR expr RPAR
-		| CEIL LPAR expr RPAR
-		| ID modifier_list
-		| IVAL
-		| RVAL
-		| BVAL
-		| SUB int_factor;
+int_factor ::= LPAR expr RPAR {:System.out.println(""):}
+		| SIZE LPAR ID basic_array_dimensions RPAR {:System.out.println(""):}
+		| FLOAT LPAR expr RPAR {:System.out.println(""):}
+		| FLOOR LPAR expr RPAR {:System.out.println(""):}
+		| CEIL LPAR expr RPAR {:System.out.println(""):}
+		| ID modifier_list {:System.out.println(""):}
+		| IVAL {:System.out.println(""):}
+		| RVAL {:System.out.println(""):}
+		| BVAL {:System.out.println(""):}
+		| SUB int_factor {:System.out.println(""):}
+		;
 
-modifier_list ::= LPAR arguments RPAR | array_dimensions;
+modifier_list ::= LPAR arguments RPAR {:System.out.println("Modifier list"):}
+ | array_dimensions {:System.out.println("Array dimension"):}
+;
 
-arguments ::= expr more_arguments 
-		|;
+arguments ::= expr more_arguments {:System.out.println("Argument list"):}
+		|
+;
 
-more_arguments ::= COMMA expr more_arguments 
-		|;
+more_arguments ::= COMMA expr more_arguments {:System.out.println("More arguments"):} 
+		|
+		;
 					     

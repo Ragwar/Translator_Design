@@ -418,10 +418,8 @@ class CUP$Parser$actions {
           case 0: // prog ::= block 
             {
               Object RESULT =null;
-		Location bxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
-		Location bxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
-		Object b = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-
+		//@@CUPDBG3
+System.out.println("Program")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("prog",0, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -444,7 +442,8 @@ class CUP$Parser$actions {
           case 2: // block ::= declarations program_body 
             {
               Object RESULT =null;
-
+		//@@CUPDBG4
+System.out.println("Block")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("block",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -453,7 +452,8 @@ class CUP$Parser$actions {
           case 3: // declarations ::= declaration SEMICOLON declarations 
             {
               Object RESULT =null;
-
+		//@@CUPDBG5
+System.out.println("Declarations list")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("declarations",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -471,7 +471,8 @@ class CUP$Parser$actions {
           case 5: // declaration ::= var_declaration 
             {
               Object RESULT =null;
-
+		//@@CUPDBG6
+System.out.println("Variable declaration")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("declaration",7, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -480,7 +481,8 @@ class CUP$Parser$actions {
           case 6: // declaration ::= fun_declaration 
             {
               Object RESULT =null;
-
+		//@@CUPDBG7
+System.out.println("Function declaration")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("declaration",7, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -489,7 +491,8 @@ class CUP$Parser$actions {
           case 7: // var_declaration ::= VAR ID array_dimemsions COLON type 
             {
               Object RESULT =null;
-
+		//@@CUPDBG8
+System.out.println("Variable ID dimension type")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("var_declaration",9, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -498,7 +501,8 @@ class CUP$Parser$actions {
           case 8: // type ::= INT 
             {
               Object RESULT =null;
-
+		//@@CUPDBG9
+System.out.println("type int")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -507,7 +511,8 @@ class CUP$Parser$actions {
           case 9: // type ::= REAL 
             {
               Object RESULT =null;
-
+		//@@CUPDBG10
+System.out.println("type real")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -516,7 +521,8 @@ class CUP$Parser$actions {
           case 10: // type ::= BOOL 
             {
               Object RESULT =null;
-
+		//@@CUPDBG11
+System.out.println("type bool")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -525,7 +531,8 @@ class CUP$Parser$actions {
           case 11: // array_dimensions ::= SLPAR expr SRPAR array_dimensions 
             {
               Object RESULT =null;
-
+		//@@CUPDBG12
+System.out.println("( expression )")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("array_dimensions",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -543,7 +550,8 @@ class CUP$Parser$actions {
           case 13: // fun_declaration ::= FUN ID param_list COLON type CLPAR fun_block CRPAR 
             {
               Object RESULT =null;
-
+		//@@CUPDBG13
+System.out.println("Function ID parameter list: type {function block}")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("fun_declaration",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-7)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -552,7 +560,8 @@ class CUP$Parser$actions {
           case 14: // fun_block ::= declarations fun_body 
             {
               Object RESULT =null;
-
+		//@@CUPDBG14
+System.out.println("Function block")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("fun_block",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -561,7 +570,8 @@ class CUP$Parser$actions {
           case 15: // param_list ::= LPAR parameters RPAR 
             {
               Object RESULT =null;
-
+		//@@CUPDBG15
+System.out.println("Parameter list")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("param_list",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -570,7 +580,8 @@ class CUP$Parser$actions {
           case 16: // parameters ::= basic_declaration more_parameters 
             {
               Object RESULT =null;
-
+		//@@CUPDBG16
+System.out.println("Parameters")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("parameters",15, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -588,7 +599,8 @@ class CUP$Parser$actions {
           case 18: // more_parameters ::= COMMA basic_declaration more_parameters 
             {
               Object RESULT =null;
-
+		//@@CUPDBG17
+System.out.println("More parameters")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("more_parameters",17, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -606,7 +618,8 @@ class CUP$Parser$actions {
           case 20: // basic_declaration ::= ID basic_array_dimensions COLON type 
             {
               Object RESULT =null;
-
+		//@@CUPDBG18
+System.out.println("Basic declaration")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("basic_declaration",16, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -615,7 +628,8 @@ class CUP$Parser$actions {
           case 21: // basic_array_dimensions ::= SLPAR SRPAR basic_array_dimensions 
             {
               Object RESULT =null;
-
+		//@@CUPDBG19
+System.out.println("Basic array dimension")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("basic_array_dimensions",18, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -633,7 +647,8 @@ class CUP$Parser$actions {
           case 23: // program_body ::= BEGIN prog_stmts END 
             {
               Object RESULT =null;
-
+		//@@CUPDBG20
+System.out.println("Program Body")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("program_body",6, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -642,7 +657,8 @@ class CUP$Parser$actions {
           case 24: // fun_body ::= BEGIN prog_stmts RETURN expr SEMICOLON END 
             {
               Object RESULT =null;
-
+		//@@CUPDBG21
+System.out.println("Function body")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("fun_body",14, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -651,7 +667,8 @@ class CUP$Parser$actions {
           case 25: // prog_stmts ::= prog_stmt SEMICOLON prog_stmts 
             {
               Object RESULT =null;
-
+		//@@CUPDBG22
+System.out.println("Program statements")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("prog_stmts",19, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -669,7 +686,8 @@ class CUP$Parser$actions {
           case 27: // prog_stmt ::= IF expr THEN prog_stmt ELSE prog_stmt 
             {
               Object RESULT =null;
-
+		//@@CUPDBG23
+System.out.println("If statement")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("prog_stmt",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -678,7 +696,8 @@ class CUP$Parser$actions {
           case 28: // prog_stmt ::= WHILE expr DO prog_stmt 
             {
               Object RESULT =null;
-
+		//@@CUPDBG24
+System.out.println("While statement")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("prog_stmt",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -687,7 +706,8 @@ class CUP$Parser$actions {
           case 29: // prog_stmt ::= READ identifier 
             {
               Object RESULT =null;
-
+		//@@CUPDBG25
+System.out.println("Read statement")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("prog_stmt",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -696,7 +716,8 @@ class CUP$Parser$actions {
           case 30: // prog_stmt ::= identifier ASSIGN expr 
             {
               Object RESULT =null;
-
+		//@@CUPDBG26
+System.out.println("Assign statement")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("prog_stmt",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -705,7 +726,8 @@ class CUP$Parser$actions {
           case 31: // prog_stmt ::= PRINT expr 
             {
               Object RESULT =null;
-
+		//@@CUPDBG27
+System.out.println("Print statement")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("prog_stmt",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -714,7 +736,8 @@ class CUP$Parser$actions {
           case 32: // prog_stmt ::= CLPAR block CRPAR 
             {
               Object RESULT =null;
-
+		//@@CUPDBG28
+System.out.println("{block}")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("prog_stmt",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -723,7 +746,8 @@ class CUP$Parser$actions {
           case 33: // identifier ::= ID array_dimensions 
             {
               Object RESULT =null;
-
+		//@@CUPDBG29
+System.out.println("Identifier")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("identifier",20, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -731,8 +755,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 34: // expr ::= expr OR bint_term 
             {
-              Integer RESULT =null;
-
+              Object RESULT =null;
+		//@@CUPDBG30
+System.out.println("Expression")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",31, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -740,8 +765,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 35: // expr ::= bint_term 
             {
-              Integer RESULT =null;
-
+              Object RESULT =null;
+		//@@CUPDBG31
+System.out.println("Two termen operation")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("expr",31, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -750,7 +776,8 @@ class CUP$Parser$actions {
           case 36: // bint_term ::= bint_term AND bint_factor 
             {
               Object RESULT =null;
-
+		//@@CUPDBG32
+System.out.println("AND operaion")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("bint_term",21, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -759,7 +786,8 @@ class CUP$Parser$actions {
           case 37: // bint_term ::= bint_factor 
             {
               Object RESULT =null;
-
+		//@@CUPDBG33
+System.out.println("Factor")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("bint_term",21, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -768,7 +796,8 @@ class CUP$Parser$actions {
           case 38: // bint_factor ::= NOT bint_factor 
             {
               Object RESULT =null;
-
+		//@@CUPDBG34
+System.out.println("Negate operation")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("bint_factor",22, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -777,7 +806,8 @@ class CUP$Parser$actions {
           case 39: // bint_factor ::= int_expr compare_op int_expr 
             {
               Object RESULT =null;
-
+		//@@CUPDBG35
+System.out.println("Compare operation")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("bint_factor",22, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -786,7 +816,8 @@ class CUP$Parser$actions {
           case 40: // bint_factor ::= int_expr 
             {
               Object RESULT =null;
-
+		//@@CUPDBG36
+System.out.println("Integer expression")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("bint_factor",22, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -795,7 +826,8 @@ class CUP$Parser$actions {
           case 41: // compare_op ::= EQUAL 
             {
               Object RESULT =null;
-
+		//@@CUPDBG37
+System.out.println("Compare operation =")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("compare_op",24, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -804,7 +836,8 @@ class CUP$Parser$actions {
           case 42: // compare_op ::= LT 
             {
               Object RESULT =null;
-
+		//@@CUPDBG38
+System.out.println("Compare operation less than")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("compare_op",24, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -813,7 +846,8 @@ class CUP$Parser$actions {
           case 43: // compare_op ::= GT 
             {
               Object RESULT =null;
-
+		//@@CUPDBG39
+System.out.println("Compare operation greater than")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("compare_op",24, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -822,7 +856,8 @@ class CUP$Parser$actions {
           case 44: // compare_op ::= LE 
             {
               Object RESULT =null;
-
+		//@@CUPDBG40
+System.out.println("Compare operation less equal")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("compare_op",24, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -831,7 +866,8 @@ class CUP$Parser$actions {
           case 45: // compare_op ::= GE 
             {
               Object RESULT =null;
-
+		//@@CUPDBG41
+System.out.println("Compare operation greater equal")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("compare_op",24, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -840,7 +876,8 @@ class CUP$Parser$actions {
           case 46: // int_expr ::= int_expr addop int_term 
             {
               Object RESULT =null;
-
+		//@@CUPDBG42
+System.out.println("Addition Expresion")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_expr",23, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -858,7 +895,8 @@ class CUP$Parser$actions {
           case 48: // addop ::= ADD 
             {
               Object RESULT =null;
-
+		//@@CUPDBG43
+System.out.println("Addition operation")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("addop",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -867,7 +905,8 @@ class CUP$Parser$actions {
           case 49: // addop ::= SUB 
             {
               Object RESULT =null;
-
+		//@@CUPDBG44
+System.out.println("Subtraction operation")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("addop",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -876,7 +915,8 @@ class CUP$Parser$actions {
           case 50: // int_term ::= int_term mulop int_factor 
             {
               Object RESULT =null;
-
+		//@@CUPDBG45
+System.out.println("Multiplication Expression")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_term",25, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -894,7 +934,8 @@ class CUP$Parser$actions {
           case 52: // mulop ::= MUL 
             {
               Object RESULT =null;
-
+		//@@CUPDBG46
+System.out.println("Multiplication operation")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("mulop",27, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -903,7 +944,8 @@ class CUP$Parser$actions {
           case 53: // mulop ::= DIV 
             {
               Object RESULT =null;
-
+		//@@CUPDBG47
+System.out.println("Division operation")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("mulop",27, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -912,7 +954,8 @@ class CUP$Parser$actions {
           case 54: // int_factor ::= LPAR expr RPAR 
             {
               Object RESULT =null;
-
+		//@@CUPDBG48
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -921,7 +964,8 @@ class CUP$Parser$actions {
           case 55: // int_factor ::= SIZE LPAR ID basic_array_dimensions RPAR 
             {
               Object RESULT =null;
-
+		//@@CUPDBG49
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -930,7 +974,8 @@ class CUP$Parser$actions {
           case 56: // int_factor ::= FLOAT LPAR expr RPAR 
             {
               Object RESULT =null;
-
+		//@@CUPDBG50
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -939,7 +984,8 @@ class CUP$Parser$actions {
           case 57: // int_factor ::= FLOOR LPAR expr RPAR 
             {
               Object RESULT =null;
-
+		//@@CUPDBG51
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -948,7 +994,8 @@ class CUP$Parser$actions {
           case 58: // int_factor ::= CEIL LPAR expr RPAR 
             {
               Object RESULT =null;
-
+		//@@CUPDBG52
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -957,7 +1004,8 @@ class CUP$Parser$actions {
           case 59: // int_factor ::= ID modifier_list 
             {
               Object RESULT =null;
-
+		//@@CUPDBG53
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -966,7 +1014,8 @@ class CUP$Parser$actions {
           case 60: // int_factor ::= IVAL 
             {
               Object RESULT =null;
-
+		//@@CUPDBG54
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -975,7 +1024,8 @@ class CUP$Parser$actions {
           case 61: // int_factor ::= RVAL 
             {
               Object RESULT =null;
-
+		//@@CUPDBG55
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -984,7 +1034,8 @@ class CUP$Parser$actions {
           case 62: // int_factor ::= BVAL 
             {
               Object RESULT =null;
-
+		//@@CUPDBG56
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -993,7 +1044,8 @@ class CUP$Parser$actions {
           case 63: // int_factor ::= SUB int_factor 
             {
               Object RESULT =null;
-
+		//@@CUPDBG57
+System.out.println("")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("int_factor",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1002,7 +1054,8 @@ class CUP$Parser$actions {
           case 64: // modifier_list ::= LPAR arguments RPAR 
             {
               Object RESULT =null;
-
+		//@@CUPDBG58
+System.out.println("Modifier list")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("modifier_list",28, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1011,7 +1064,8 @@ class CUP$Parser$actions {
           case 65: // modifier_list ::= array_dimensions 
             {
               Object RESULT =null;
-
+		//@@CUPDBG59
+System.out.println("Array dimension")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("modifier_list",28, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1020,7 +1074,8 @@ class CUP$Parser$actions {
           case 66: // arguments ::= expr more_arguments 
             {
               Object RESULT =null;
-
+		//@@CUPDBG60
+System.out.println("Argument list")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("arguments",29, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1038,7 +1093,8 @@ class CUP$Parser$actions {
           case 68: // more_arguments ::= COMMA expr more_arguments 
             {
               Object RESULT =null;
-
+		//@@CUPDBG61
+System.out.println("More arguments")
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("more_arguments",30, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
